@@ -1,0 +1,17 @@
+{
+  "name": "guardiao-espiritual-animais",
+  "version": "1.0.0",
+  "description": "Landing Page - O Guardião Espiritual dos Animais",
+  "author": "Helena Fontes - Simbas Amor Animais",
+  "license": "MIT",
+  "scripts": {
+    "dev": "python -m http.server 8000",
+    "build": "echo 'Build complete'"
+  },
+  "keywords": [
+    "landing-page",
+    "pets",
+    "espiritualidade",
+    "animais"
+  ]
+}

@@ -1,0 +1,33 @@
+# Robots.txt - O Guardião Espiritual dos Animais
+# Permitir todos os crawlers
+
+User-agent: *
+Allow: /
+
+# Crawlers específicos importantes
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Sitemap
+Sitemap: https://www.simbaspet.com.br/sitemap.xml
+
+# Crawler-delay (evitar bloqueios por rate limiting)
+Crawl-delay: 1

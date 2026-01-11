@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exportar Projeto para Vercel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .step {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        
+        .step h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .step p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .file-list {
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .file-list h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        .file-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .file-item:last-child {
+            border-bottom: none;
+        }
+        
+        .file-icon {
+            color: #667eea;
+            font-size: 1.2rem;
+        }
+        
+        .button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            display: inline-block;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+        
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .alert {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            color: #856404;
+        }
+        
+        .success {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            color: #155724;
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Migração para Vercel</h1>
+        <p class="subtitle">Guia simplificado para migrar seu projeto</p>
+        
+        <div class="alert">
+            <strong>⚠️ Importante:</strong> Este é um guia de instrução. Os arquivos precisam ser baixados do painel do Genspark.
+        </div>
+        
+        <div class="step">
+            <h3>📋 PASSO 1: Criar conta no Vercel</h3>
+            <p>1. Acesse: <code>https://vercel.com</code></p>
+            <p>2. Clique em "Sign Up"</p>
+            <p>3. Escolha "Continue with GitHub" (recomendado)</p>
+            <p>4. Autorize a conexão</p>
+        </div>
+        
+        <div class="step">
+            <h3>📦 PASSO 2: Preparar os arquivos</h3>
+            <p>Você precisa dos seguintes arquivos do projeto:</p>
+        </div>
+        
+        <div class="file-list">
+            <h3>📁 Arquivos Necessários:</h3>
+            <div class="file-item">
+                <span class="file-icon">📄</span>
+                <strong>index.html</strong> - Página principal
+            </div>
+            <div class="file-item">
+                <span class="file-icon">📄</span>
+                <strong>livros.html</strong> - Página de livros
+            </div>
+            <div class="file-item">
+                <span class="file-icon">📁</span>
+                <strong>css/style.css</strong> - Estilos
+            </div>
+            <div class="file-item">
+                <span class="file-icon">📁</span>
+                <strong>js/script.js</strong> - JavaScript
+            </div>
+            <div class="file-item">
+                <span class="file-icon">📁</span>
+                <strong>images/</strong> - Todas as imagens (10 arquivos)
+            </div>
+            <div class="file-item">
+                <span class="file-icon">⚙️</span>
+                <strong>vercel.json</strong> - Configuração (já criado)
+            </div>
+            <div class="file-item">
+                <span class="file-icon">⚙️</span>
+                <strong>robots.txt</strong> - SEO (já criado)
+            </div>
+            <div class="file-item">
+                <span class="file-icon">⚙️</span>
+                <strong>sitemap.xml</strong> - SEO (já criado)
+            </div>
+        </div>
+        
+        <div class="step">
+            <h3>📤 PASSO 3: Fazer deploy no Vercel</h3>
+            <p><strong>Opção A - Upload Manual (Mais Fácil):</strong></p>
+            <p>1. No Vercel, clique em "Add New Project"</p>
+            <p>2. Clique em "Import" ou arraste a pasta do projeto</p>
+            <p>3. Clique em "Deploy"</p>
+            <p>4. Aguarde 1-2 minutos</p>
+            <br>
+            <p><strong>Opção B - Via GitHub (Mais Profissional):</strong></p>
+            <p>1. Crie um repositório no GitHub</p>
+            <p>2. Faça upload dos arquivos</p>
+            <p>3. No Vercel, conecte o repositório</p>
+            <p>4. Clique em "Deploy"</p>
+        </div>
+        
+        <div class="step">
+            <h3>🌐 PASSO 4: Conectar domínio simbaspet.com.br</h3>
+            <p>1. No Vercel, vá em "Settings" → "Domains"</p>
+            <p>2. Adicione: <code>www.simbaspet.com.br</code></p>
+            <p>3. O Vercel mostrará os DNS que você deve configurar</p>
+            <p>4. No Registro.br, adicione os DNS do Vercel</p>
+            <p>5. Aguarde 24-48h para propagação</p>
+        </div>
+        
+        <div class="alert success">
+            <strong>✅ Benefícios do Vercel:</strong>
+            <ul style="margin-top: 10px; margin-left: 20px;">
+                <li>✅ 100% Gratuito</li>
+                <li>✅ Status Code 200 garantido (sem erro 405)</li>
+                <li>✅ Google Analytics funciona perfeitamente</li>
+                <li>✅ Preview em WhatsApp/Instagram/Facebook</li>
+                <li>✅ SSL automático (HTTPS)</li>
+                <li>✅ CDN global (site super rápido)</li>
+                <li>✅ Deploy automático (atualizações instantâneas)</li>
+            </ul>
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="https://vercel.com/signup" class="button" target="_blank">
+                🚀 Criar Conta no Vercel Agora
+            </a>
+        </div>
+        
+        <div style="text-align: center; margin-top: 20px; color: #666;">
+            <p>Depois de criar a conta, volte aqui e me avise! 😊</p>
+        </div>
+    </div>
+    
+    <script>
+        console.log('📦 Projeto pronto para migração!');
+        console.log('📁 Total de arquivos: ~15');
+        console.log('⚙️ Arquivos de configuração: vercel.json, robots.txt, sitemap.xml');
+        console.log('✅ Tudo pronto para deploy!');
+    </script>
+</body>
+</html>

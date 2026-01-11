@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Google Analytics - Simbas Pet</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L60MKFYI3B"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-L60MKFYI3B');
+      
+      // Log de confirmação
+      console.log('✅ Google Analytics carregado!');
+      console.log('📊 ID: G-L60MKFYI3B');
+    </script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            background: white;
+            color: #333;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #667eea;
+            text-align: center;
+        }
+        .status {
+            padding: 20px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .success {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            color: #155724;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px 5px;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: #764ba2;
+            transform: translateY(-3px);
+        }
+        .instructions {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .instructions h3 {
+            color: #856404;
+            margin-top: 0;
+        }
+        code {
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #e83e8c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Teste do Google Analytics</h1>
+        
+        <div class="status success">
+            <strong>✅ Código do Google Analytics está instalado nesta página!</strong>
+            <p>ID: <code>G-L60MKFYI3B</code></p>
+        </div>
+        
+        <div class="instructions">
+            <h3>📋 Instruções para Testar:</h3>
+            <ol>
+                <li>Mantenha esta página aberta</li>
+                <li>Abra o <strong>Google Analytics</strong> em outra aba</li>
+                <li>Vá em: <strong>Relatórios → Tempo Real → Visão geral</strong></li>
+                <li>Você deve ver <strong>"1 usuário ativo"</strong></li>
+                <li>A página deve aparecer como: <code>/teste-analytics.html</code></li>
+            </ol>
+        </div>
+        
+        <h3>🧪 Teste os Eventos:</h3>
+        <p>Clique nos botões abaixo e veja se os eventos aparecem no Analytics (Tempo Real → Eventos):</p>
+        
+        <div style="text-align: center;">
+            <button onclick="testarEvento('botao_1')">🔵 Botão Teste 1</button>
+            <button onclick="testarEvento('botao_2')">🟢 Botão Teste 2</button>
+            <button onclick="testarEvento('botao_3')">🟡 Botão Teste 3</button>
+        </div>
+        
+        <div id="resultado" style="margin-top: 30px; padding: 20px; background: #f0f0f0; border-radius: 10px; display: none;">
+            <h3>📊 Eventos Enviados:</h3>
+            <ul id="listaEventos"></ul>
+        </div>
+        
+        <div class="instructions" style="margin-top: 30px;">
+            <h3>🔍 Verificar no Console:</h3>
+            <ol>
+                <li>Aperte <code>F12</code> para abrir o Console</li>
+                <li>Procure por mensagens começando com ✅</li>
+                <li>Se aparecer "Google Analytics carregado!" → Está funcionando!</li>
+            </ol>
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="index.html" style="color: #667eea; text-decoration: none; font-weight: bold;">
+                ← Voltar para Landing Page Principal
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        // Teste de eventos
+        let eventosEnviados = 0;
+        
+        function testarEvento(nomeBotao) {
+            // Envia evento para o Google Analytics
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'teste_click', {
+                    'event_category': 'Teste',
+                    'event_label': nomeBotao
+                });
+                
+                console.log('✅ Evento enviado:', nomeBotao);
+                
+                // Mostra resultado na tela
+                eventosEnviados++;
+                document.getElementById('resultado').style.display = 'block';
+                const lista = document.getElementById('listaEventos');
+                const item = document.createElement('li');
+                item.textContent = `${eventosEnviados}. Evento: ${nomeBotao} enviado às ${new Date().toLocaleTimeString()}`;
+                lista.appendChild(item);
+                
+                alert('✅ Evento "' + nomeBotao + '" enviado!\n\nVerifique no Google Analytics:\nTempo Real → Eventos');
+            } else {
+                alert('❌ Erro: Google Analytics não está carregado!');
+                console.error('❌ gtag não está definido');
+            }
+        }
+        
+        // Verificação automática
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                if (typeof gtag !== 'undefined') {
+                    console.log('✅ Verificação: Google Analytics está funcionando!');
+                    console.log('📊 Agora vá no Analytics → Tempo Real para ver esta página');
+                } else {
+                    console.error('❌ Verificação: Google Analytics NÃO está carregado!');
+                }
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baixar Arquivos de Configuração - Vercel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .alert {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            color: #856404;
+        }
+        
+        .alert strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .file-card {
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .file-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .file-card pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            position: relative;
+        }
+        
+        .copy-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.2s;
+        }
+        
+        .copy-btn:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+        
+        .copy-btn.copied {
+            background: #28a745;
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .steps {
+            background: #e7f3ff;
+            border: 2px solid #2196F3;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .steps h3 {
+            color: #1976D2;
+            margin-bottom: 15px;
+        }
+        
+        .steps ol {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+        
+        .steps li {
+            margin-bottom: 10px;
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #d63384;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📦 Arquivos de Configuração do Vercel</h1>
+        <p class="subtitle">Baixe e adicione estes arquivos na pasta do seu projeto</p>
+        
+        <div class="alert">
+            <strong>📋 Instruções Rápidas:</strong>
+            Para cada arquivo abaixo:
+            <ol style="margin-top: 10px; margin-left: 20px;">
+                <li>Clique no botão "📋 Copiar Conteúdo"</li>
+                <li>Abra o Bloco de Notas (ou editor de texto)</li>
+                <li>Cole o conteúdo (Ctrl+V)</li>
+                <li>Salve com o nome exato indicado</li>
+                <li>Coloque na pasta do projeto</li>
+            </ol>
+        </div>
+
+        <!-- Arquivo 1: vercel.json -->
+        <div class="file-card">
+            <h3>📄 1. vercel.json</h3>
+            <p style="margin-bottom: 15px; color: #666;">
+                <strong>Para que serve:</strong> Configuração principal do Vercel (headers, rotas, CORS)
+            </p>
+            <pre id="file1">{
+  "version": 2,
+  "builds": [
+    {
+      "src": "**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, PUT, DELETE, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/index.html"
+    }
+  ]
+}</pre>
+            <button class="copy-btn" onclick="copyToClipboard('file1', this)">📋 Copiar Conteúdo</button>
+            <button class="download-btn" onclick="downloadFile('vercel.json', document.getElementById('file1').textContent)">💾 Baixar vercel.json</button>
+        </div>
+
+        <!-- Arquivo 2: robots.txt -->
+        <div class="file-card">
+            <h3>📄 2. robots.txt</h3>
+            <p style="margin-bottom: 15px; color: #666;">
+                <strong>Para que serve:</strong> Permite que Google, WhatsApp, Facebook indexem seu site
+            </p>
+            <pre id="file2"># Robots.txt - O Guardião Espiritual dos Animais
+# Permitir todos os crawlers
+
+User-agent: *
+Allow: /
+
+# Crawlers específicos importantes
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Sitemap
+Sitemap: https://www.simbaspet.com.br/sitemap.xml
+
+# Crawler-delay (evitar bloqueios por rate limiting)
+Crawl-delay: 1</pre>
+            <button class="copy-btn" onclick="copyToClipboard('file2', this)">📋 Copiar Conteúdo</button>
+            <button class="download-btn" onclick="downloadFile('robots.txt', document.getElementById('file2').textContent)">💾 Baixar robots.txt</button>
+        </div>
+
+        <!-- Arquivo 3: sitemap.xml -->
+        <div class="file-card">
+            <h3>📄 3. sitemap.xml</h3>
+            <p style="margin-bottom: 15px; color: #666;">
+                <strong>Para que serve:</strong> Mapa do site para Google e outros buscadores
+            </p>
+            <pre id="file3">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;
+  
+  &lt;!-- Página Principal --&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.simbaspet.com.br/&lt;/loc&gt;
+    &lt;lastmod&gt;2026-01-11&lt;/lastmod&gt;
+    &lt;changefreq&gt;daily&lt;/changefreq&gt;
+    &lt;priority&gt;1.0&lt;/priority&gt;
+  &lt;/url&gt;
+  
+  &lt;!-- Página de Livros --&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.simbaspet.com.br/livros.html&lt;/loc&gt;
+    &lt;lastmod&gt;2026-01-11&lt;/lastmod&gt;
+    &lt;changefreq&gt;weekly&lt;/changefreq&gt;
+    &lt;priority&gt;0.8&lt;/priority&gt;
+  &lt;/url&gt;
+  
+&lt;/urlset&gt;</pre>
+            <button class="copy-btn" onclick="copyToClipboard('file3', this)">📋 Copiar Conteúdo</button>
+            <button class="download-btn" onclick="downloadFile('sitemap.xml', document.getElementById('file3').textContent)">💾 Baixar sitemap.xml</button>
+        </div>
+
+        <!-- Arquivo 4: .vercelignore -->
+        <div class="file-card">
+            <h3>📄 4. .vercelignore</h3>
+            <p style="margin-bottom: 15px; color: #666;">
+                <strong>Para que serve:</strong> Arquivos que o Vercel deve ignorar no deploy
+            </p>
+            <pre id="file4"># Arquivos que o Vercel deve ignorar
+
+# Documentação
+README.md
+GUIA-*.md
+COPY-*.md
+OTIMIZACAO-*.md
+INDEX.md
+CONFERENCIA-*.md
+
+# Testes
+teste-analytics.html
+BAIXAR-ARQUIVOS-VERCEL.html
+exportar-projeto.html
+
+# Sistema
+.DS_Store
+Thumbs.db
+*.log</pre>
+            <button class="copy-btn" onclick="copyToClipboard('file4', this)">📋 Copiar Conteúdo</button>
+            <button class="download-btn" onclick="downloadFile('.vercelignore', document.getElementById('file4').textContent)">💾 Baixar .vercelignore</button>
+        </div>
+
+        <!-- Passo a Passo -->
+        <div class="steps">
+            <h3>✅ Como Adicionar os Arquivos na Pasta do Projeto</h3>
+            <ol>
+                <li><strong>Baixe todos os 4 arquivos</strong> usando os botões "💾 Baixar" acima</li>
+                <li><strong>Abra a pasta</strong> onde você baixou os arquivos do projeto do Genspark</li>
+                <li><strong>Mova os 4 arquivos baixados</strong> para <strong>DENTRO</strong> da pasta do projeto (na raiz, junto com index.html)</li>
+                <li><strong>Estrutura final</strong> deve ficar assim:</li>
+            </ol>
+            
+            <pre style="background: #2d2d2d; color: #f8f8f2; padding: 20px; border-radius: 8px; margin-top: 15px;">📁 guardiao-espiritual-animais/
+├── 📄 index.html
+├── 📄 livros.html
+├── 📄 vercel.json          ← NOVO
+├── 📄 robots.txt           ← NOVO
+├── 📄 sitemap.xml          ← NOVO
+├── 📄 .vercelignore        ← NOVO
+├── 📁 css/
+│   └── 📄 style.css
+├── 📁 js/
+│   └── 📄 script.js
+└── 📁 images/
+    ├── 🖼️ mockup.png
+    ├── 🖼️ autora.png
+    ├── 🖼️ bonus1.png
+    ├── 🖼️ bonus2.png
+    └── 🖼️ livro1-5.jpg...</pre>
+        </div>
+
+        <div class="alert" style="background: #d4edda; border-color: #28a745; color: #155724;">
+            <strong>🎉 Pronto!</strong>
+            Depois de adicionar os 4 arquivos na pasta do projeto, você pode:
+            <ul style="margin-top: 10px; margin-left: 20px;">
+                <li>✅ Fazer o deploy no Vercel</li>
+                <li>✅ Arrastar a pasta inteira para o Vercel</li>
+                <li>✅ Fazer upload via GitHub</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <button class="download-btn" onclick="downloadAll()" style="font-size: 1.2rem; padding: 20px 40px;">
+                📦 Baixar TODOS os Arquivos de Uma Vez
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(elementId, button) {
+            const text = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                button.textContent = '✅ Copiado!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.textContent = '📋 Copiar Conteúdo';
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        function downloadFile(filename, content) {
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function downloadAll() {
+            const files = [
+                { name: 'vercel.json', content: document.getElementById('file1').textContent },
+                { name: 'robots.txt', content: document.getElementById('file2').textContent },
+                { name: 'sitemap.xml', content: document.getElementById('file3').textContent },
+                { name: '.vercelignore', content: document.getElementById('file4').textContent }
+            ];
+
+            files.forEach((file, index) => {
+                setTimeout(() => {
+                    downloadFile(file.name, file.content);
+                }, index * 500);
+            });
+
+            alert('✅ Baixando todos os arquivos!\n\nOs 4 arquivos serão baixados em sequência.\nAdicione-os na pasta do seu projeto.');
+        }
+
+        console.log('📦 Página de download carregada!');
+        console.log('📄 4 arquivos disponíveis para download');
+        console.log('✅ Clique nos botões para baixar');
+    </script>
+</body>
+</html>
